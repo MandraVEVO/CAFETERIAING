@@ -3,6 +3,9 @@ import {DatosPersonales} from "../src/db/models/index.js";
 
 class DatosPersonalesService{
     constructor(){}
+    async create(data){ // create new data
+        return await DatosPersonales.create(data);
+    }
     async getAll(){ // get all data from the table
         return await DatosPersonales.findAll();
     }
