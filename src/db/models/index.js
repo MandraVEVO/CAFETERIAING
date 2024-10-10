@@ -4,6 +4,7 @@ import { DatosPersonales, DatosPersonalesScheme } from "../models/DatosPersonale
 import { Cliente, ClienteScheme } from "../models/Cliente.js";
 import { Empleado, EmpleadoScheme } from "../models/Empleado.js";
 import { Barista, BaristaScheme } from "../models/Barista.js";
+import { Administrativo, AdministrativoScheme } from "./Administrativo.js";
 /* aqui las pinches tablas */
 function setupModels(sequelize)
 {
@@ -11,6 +12,7 @@ function setupModels(sequelize)
     Cliente.init(ClienteScheme, Cliente.config(sequelize));
     Empleado.init(EmpleadoScheme, Empleado.config(sequelize));
     Barista.init(BaristaScheme, Barista.config(sequelize));
+    Administrativo.init(AdministrativoScheme, Administrativo.config(sequelize));
 
     /* para todas las tablas */
     /* las relaciones hasta abajo */
@@ -25,6 +27,9 @@ function setupModels(sequelize)
     /* herencia empleado y barista */
     Empleado.hasOne(Barista); //el que va heredar
     Barista.belongsTo(Empleado);
+    /* herencia empleado y administrativo */
+    Empleado.hasOne(Administrativo); //el que va heredar
+    Administrativo.belongsTo(Empleado);
 }
 
 const sequelize = new Sequelize(
@@ -42,6 +47,6 @@ const sequelize = new Sequelize(
 sequelize.sync();
 setupModels(sequelize);
 
-export { setupModels, DatosPersonales, Cliente, Empleado, Barista };    
+export { setupModels, DatosPersonales, Cliente, Empleado, Barista, Administrativo };    
 
 
