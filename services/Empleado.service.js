@@ -15,7 +15,9 @@ class EmpleadoService{
         });
     }
     async getById(id){ // get data by id
-        return await Empleado.findByPk(id);
+        return await Empleado.findByPk(id,{
+            include: DatosPersonales
+        });
     }
     async update(id, data){ // update data by id
     const Empleado = await Empleado.findByPk(id);
