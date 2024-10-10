@@ -45,6 +45,11 @@ const DatosPersonalesScheme = {
         allowNull: false,
         field: "nombre"
     },
+    apellido:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        field: "apellido"
+    },
     fechaNac:{
         type: DataTypes.STRING,
         allowNull: false,
