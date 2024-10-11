@@ -1,4 +1,5 @@
 import { Administrativo } from "../src/db/models/index.js";
+import { DatosPersonales } from "../src/db/models/index.js";
 import { Empleado } from "../src/db/models/index.js";
 
 class AdministrativoService{
@@ -9,13 +10,19 @@ class AdministrativoService{
     async getAll(){ // get all data from the table
         return await Administrativo.findAll({
             include: [{
-                model: Empleado
+                model: Empleado,
+            include: {
+                model: DatosPersonales}         
             }]
         });
     }
     async getById(id){ // get data by id
         return await Administrativo.findByPk(id,{
-            include: Empleado
+            include: [{
+                model: Empleado,
+                include: {
+                    model: DatosPersonales}   
+            }]
         });
     }
     async update(id, data){ // update data by id

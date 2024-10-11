@@ -51,7 +51,7 @@ DatosPersonales:
 
 Cliente:
 {
-    DatosPersonaleId: //checar ID de cliente neri en bd
+    "DatosPersonaleId": 1
 }
 
 Empleado:
