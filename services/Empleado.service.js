@@ -20,13 +20,13 @@ class EmpleadoService{
         });
     }
     async update(id, data){ // update data by id
-    const Empleado = await Empleado.findByPk(id);
-    return await Empleado.update(data);
+    const empleado = await Empleado.findByPk(id);
+    return await empleado.update(data);
     }
 
     async delete(id){ // delete data by id
-        const Empleado = await Empleado.findByPk(id);
-        await Empleado.destroy();
+        const empleado = await Empleado.findByPk(id);
+        await empleado.destroy();
         return {deleted: true};
     }
 

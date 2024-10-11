@@ -19,13 +19,13 @@ class AdministrativoService{
         });
     }
     async update(id, data){ // update data by id
-    const Administrativo = await Administrativo.findByPk(id);
-    return await Administrativo.update(data);
+    const administrativo = await Administrativo.findByPk(id);
+    return await administrativo.update(data);
     }
 
     async delete(id){ // delete data by id
-        const Administrativo = await Administrativo.findByPk(id);
-        await Administrativo.destroy();
+        const administrativo = await Administrativo.findByPk(id);
+        await administrativo.destroy();
         return {deleted: true};
     }
 }

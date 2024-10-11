@@ -13,13 +13,13 @@ class DatosPersonalesService{
         return await DatosPersonales.findByPk(id);
     }
     async update(id, data){ // update data by id
-    const DatosPersonales = await DatosPersonales.findByPk(id);
-    return await DatosPersonales.update(data);
+    const datosPersonales = await DatosPersonales.findByPk(id);
+    return await datosPersonales.update(data);
     }
 
     async delete(id){ // delete data by id
-        const DatosPersonales = await DatosPersonales.findByPk(id);
-        await DatosPersonales.destroy();
+        const datosPersonales = await DatosPersonales.findByPk(id);
+        await datosPersonales.destroy();
         return {deleted: true};
     }
 

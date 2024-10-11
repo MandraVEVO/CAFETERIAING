@@ -7,16 +7,16 @@ class ArticuloMenuService{
         return await ArticuloMenu.create(data);
     }
     async getAll(){
-        return await ArticuloMenu.findAll({
+        return await ArticuloMenu.findAll(/* {
             include: [{
                 model: Menu //crear menu
             }]
-        });
+        } */);
     }
     async getById(id){
-        return await ArticuloMenu.findByPk(id,{
+        return await ArticuloMenu.findByPk(id/* ,{
             include: Menu //crear menu
-        });
+        } */);
     }
     async update(id, data){
         const articuloMenu = await ArticuloMenu.findByPk(id);

@@ -44,7 +44,7 @@ const EmpleadoScheme = {
     costoHora: {
         type: DataTypes.FLOAT,
         allowNull: false,
-        field: "contrasena"
+        field: "costoHora"  
     }
 }
 

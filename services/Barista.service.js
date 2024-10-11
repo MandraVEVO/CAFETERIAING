@@ -19,13 +19,13 @@ class BaristaService{
         });
     }
     async update(id, data){ // update data by id
-    const Barista = await Barista.findByPk(id);
-    return await Barista.update(data);
+    const barista = await Barista.findByPk(id);
+    return await barista.update(data);
     }
 
     async delete(id){ // delete data by id
-        const Barista = await Barista.findByPk(id);
-        await Barista.destroy();
+        const barista = await Barista.findByPk(id);
+        await barista.destroy();
         return {deleted: true};
     }
 

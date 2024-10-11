@@ -22,13 +22,13 @@ class PedidoService{
     }
 
     async update(id, data){
-    const Pedido = await Pedido.findByPk(id);
-    return await Pedido.update(data);
+    const pedido = await Pedido.findByPk(id);
+    return await pedido.update(data);
     }
 
     async delete(id){
-        const Pedido = await Pedido.findByPk(id);
-        await Pedido.destroy();
+        const pedido = await Pedido.findByPk(id);
+        await pedido.destroy();
         return {deleted: true};
     }
 }

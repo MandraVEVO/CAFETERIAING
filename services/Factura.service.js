@@ -12,13 +12,13 @@ class FacturaService{  //revisar porque no hereda de nadie pero por si acaso pre
         return await Factura.findByPk(id);
     }
     async update(id, data){ // update data by id
-    const Factura = await Factura.findByPk(id);
-    return await Factura.update(data);
+    const factura = await Factura.findByPk(id);
+    return await factura.update(data);
     }
 
     async delete(id){ // delete data by id
-        const Factura = await Factura.findByPk(id);
-        await Factura.destroy();
+        const factura = await Factura.findByPk(id);
+        await factura.destroy();
         return {deleted: true};
     }
 }
