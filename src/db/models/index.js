@@ -5,6 +5,11 @@ import { Cliente, ClienteScheme } from "../models/Cliente.js";
 import { Empleado, EmpleadoScheme } from "../models/Empleado.js";
 import { Barista, BaristaScheme } from "../models/Barista.js";
 import { Administrativo, AdministrativoScheme } from "./Administrativo.js";
+import {Pedido, PedidoScheme} from "./Pedido.js";
+import {Factura, FacturaScheme} from "./Factura.js";
+import { ArticuloMenu, ArticuloMenuScheme } from "./ArticuloMenu.js";
+import { Menu, MenuScheme } from "./Menu.js";
+import { Cafeteria,CafeteriaScheme } from "./Cafeteria.js";
 /* aqui las pinches tablas */
 function setupModels(sequelize)
 {
@@ -13,6 +18,11 @@ function setupModels(sequelize)
     Empleado.init(EmpleadoScheme, Empleado.config(sequelize));
     Barista.init(BaristaScheme, Barista.config(sequelize));
     Administrativo.init(AdministrativoScheme, Administrativo.config(sequelize));
+    Pedido.init(PedidoScheme, Pedido.config(sequelize));
+    Factura.init(FacturaScheme, Factura.config(sequelize));
+    ArticuloMenu.init(ArticuloMenuScheme, ArticuloMenu.config(sequelize));
+    Menu.init(MenuScheme, Menu.config(sequelize));
+    Cafeteria.init(CafeteriaScheme, Cafeteria.config(sequelize));
 
     /* para todas las tablas */
     /* las relaciones hasta abajo */
@@ -30,6 +40,26 @@ function setupModels(sequelize)
     /* herencia empleado y administrativo */
     Empleado.hasOne(Administrativo); //el que va heredar
     Administrativo.belongsTo(Empleado);
+
+
+    /* faltan las relaciones para pedido */
+    ArticuloMenu.hasMany(Pedido);
+    Pedido.belongsTo(ArticuloMenu);
+
+    Cliente.hasMany(Pedido);
+    Pedido.belongsTo(Cliente);
+
+    Menu.hasMany(ArticuloMenu);
+    ArticuloMenu.belongsTo(Menu);
+
+    Cafeteria.hasOne(Menu);
+    Menu.belongsTo(Cafeteria);
+
+    Cafeteria.hasMany(Empleado);
+    Empleado.belongsTo(Cafeteria);
+
+    Factura.hasOne(Pedido);
+    Pedido.belongsTo(Factura);
 }
 
 const sequelize = new Sequelize(
@@ -47,6 +77,6 @@ const sequelize = new Sequelize(
 sequelize.sync();
 setupModels(sequelize);
 
-export { setupModels, DatosPersonales, Cliente, Empleado, Barista, Administrativo };    
+export { setupModels, DatosPersonales, Cliente, Empleado, Barista, Administrativo, Pedido, Factura, ArticuloMenu, Menu, Cafeteria };    
 
 
