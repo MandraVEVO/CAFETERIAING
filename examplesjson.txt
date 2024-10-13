@@ -65,7 +65,7 @@ Empleado:
 }
 
 ///////////////////////////////////////
-para la laptop puta madre
+Datos para bd 
 
 DatosPersonalesEmpleado1:
 {
