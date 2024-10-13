@@ -1,5 +1,7 @@
-import {Pedido} from "../src/db/models/index.js";
+import {DatosPersonales, Pedido} from "../src/db/models/index.js";
 import { Cliente } from "../src/db/models/index.js";
+import { ArticuloMenu } from "../src/db/models/index.js";
+import { Factura } from "../src/db/models/index.js";
 
 class PedidoService{
     constructor(){}
@@ -9,15 +11,35 @@ class PedidoService{
 
     async getAll(){
         return await Pedido.findAll({
-            include: [{
-                Model: Cliente,ArticuloMenu,Factura //revisar esto 
-            }]
+            include: [
+                {
+                model: Factura
+            },
+            {
+                model: Cliente,
+                include: [DatosPersonales] 
+            },
+            {
+                model: ArticuloMenu
+            }
+        ]
         })
     }
 
     async getById(id){
         return await Pedido.findByPk(id,{
-            include: Cliente,ArticuloMenu,Factura //revisar esto
+            include: [
+                {
+                model: Factura
+            },
+            {
+                model: Cliente,
+                include: [DatosPersonales] 
+            },
+            {
+                model: ArticuloMenu
+            }
+        ]
         })
     }
 

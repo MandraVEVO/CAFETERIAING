@@ -64,3 +64,111 @@ Empleado:
     "CafeteriumId": 1
 }
 
+///////////////////////////////////////
+para la laptop puta madre
+
+DatosPersonalesEmpleado1:
+{
+    "telefono":"9512392474",
+    "direccion":"Santa Rosa",
+    "correo":"sosa@gmail.com",
+    "genero":"M",
+    "nombre": "Diego",
+    "apellido": "Sosa Ramirez",
+    "fechaNac": "26/03/2004"
+}
+
+DatosPersonalesCliente1:
+{
+    "telefono":"9514506693",
+   "direccion":"Crespo",
+    "correo":"nerigei@gmail.com",
+    "genero":"M",
+    "nombre": "Neri",
+    "apellido": "Sosa Villa Nueva",
+    "fechaNac": "11/08/2003"
+}
+
+DatosPersonalesEmpleado1:
+{
+    "telefono":"9512392474",
+    "direccion":"Santa Rosa",
+    "correo":"sosa@gmail.com",
+    "genero":"M",
+    "nombre": "Diego",
+    "apellido": "Sosa Ramirez",
+    "fechaNac": "26/03/2004"
+}
+
+DatosPersonalesBarista1:
+{
+    "telefono":"+81 80-2279-1867",
+   "direccion":"japon",
+    "correo":"inrando0607@gmail.com",
+    "genero":"M",
+    "nombre": "Chuhei",
+    "apellido": "Nakajima",
+    "fechaNac": "11/08/2000"
+}
+
+Cafeteria1
+{
+    "nombre":"Familia",
+    "ubicacion":"Zaragoza",
+    "empleado": ["Sosa","Daniel"]
+    
+}
+
+Empleado: (siempre revisar la ID de datos personales y la de Cafeteria)
+{
+    "DatosPersonaleId": 2,
+    "cargoEmpleado":"Gestor de almacen",
+    "curp": "diegososa123456789",
+    "rfc": "diegososa1234",
+    "costoHora": 80.00,
+    "CafeteriumId": 1
+}
+
+Empleado: (siempre revisar la ID de datos personales y la de Cafeteria)
+{
+    "DatosPersonaleId": 3,
+    "cargoEmpleado":"Bartender",
+    "curp": "chuheinaka12345678",
+    "rfc": "chuheinaka123",
+    "costoHora": 150.00,
+    "CafeteriumId": 1
+}
+
+barista:
+{
+    "especialidad": ["Cocteleria","Vinos"],
+    "EmpleadoId": 2
+}
+
+ArticuloMenu: //revisar para quitar relacion con Menu
+{
+    "nombre":"Afogato",
+    "precio": 55.50,
+    "descripcion": "Cafe expreso con helado" 
+}
+
+menu:
+{
+    "articulos": ["Afogato","Soda Italiana","Chocolate de leche","Pan dulce"],
+    "CafeteriumId": 1
+}
+
+factura:
+{
+    "pedido": "pedido Neri",
+    "fecha": "11/10/2024",
+    "montoTotal": 50.00
+}
+
+pedido:
+{
+    "articulos":["Afogato"],
+    "ArticuloMenuId": 1,
+    "ClienteId": 1,
+    "FacturaId": 1
+}

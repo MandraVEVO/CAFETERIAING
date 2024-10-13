@@ -1,7 +1,7 @@
 import { Administrativo } from "../src/db/models/index.js";
 import { DatosPersonales } from "../src/db/models/index.js";
 import { Empleado } from "../src/db/models/index.js";
-
+import { Cafeteria } from "../src/db/models/index.js";
 class AdministrativoService{
     constructor(){}
     async create(data){ // create new data
@@ -11,8 +11,9 @@ class AdministrativoService{
         return await Administrativo.findAll({
             include: [{
                 model: Empleado,
-            include: {
-                model: DatosPersonales}         
+                include:
+                [DatosPersonales, Cafeteria]
+                        
             }]
         });
     }
@@ -20,8 +21,9 @@ class AdministrativoService{
         return await Administrativo.findByPk(id,{
             include: [{
                 model: Empleado,
-                include: {
-                    model: DatosPersonales}   
+                include:
+                [DatosPersonales, Cafeteria]
+                  
             }]
         });
     }

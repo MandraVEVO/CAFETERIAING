@@ -49,11 +49,11 @@ function setupModels(sequelize)
     Cliente.hasMany(Pedido);
     Pedido.belongsTo(Cliente);
 
-    Menu.hasMany(ArticuloMenu);
-    ArticuloMenu.belongsTo(Menu);
+    /* Menu.hasMany(ArticuloMenu);
+    ArticuloMenu.belongsTo(Menu); */
 
-    Cafeteria.hasOne(Menu);
-    Menu.belongsTo(Cafeteria);
+    Menu.hasOne(Cafeteria);
+    Cafeteria.belongsTo(Menu);
 
     Cafeteria.hasMany(Empleado);
     Empleado.belongsTo(Cafeteria);

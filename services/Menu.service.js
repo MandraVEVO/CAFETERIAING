@@ -8,15 +8,15 @@ class MenuService{
     }
     async getAll(){
         return await Menu.findAll({
-            include: [{
+            /* include: [{
                 model: Cafeteria
-            }]
+            }] */
         });
     }
     async getById(id){
-        return await Menu.findByPk(id,{
+        return await Menu.findByPk(id/* ,{
             include: Cafeteria
-        });
+        } */);
     }
     async update(id, data){
         const menu = await Menu.findByPk(id);

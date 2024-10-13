@@ -1,4 +1,5 @@
-import { Barista } from "../src/db/models/index.js";
+import { Barista, Cafeteria } from "../src/db/models/index.js";
+import { DatosPersonales } from "../src/db/models/index.js";
 import { Empleado } from "../src/db/models/index.js";
 
 class BaristaService{
@@ -9,13 +10,22 @@ class BaristaService{
     async getAll(){ // get all data from the table
         return await Barista.findAll({
             include: [{
-                model: Empleado
+                model: Empleado,
+                include:
+                [DatosPersonales, Cafeteria]
+                
             }]
         });
     }
     async getById(id){ // get data by id
         return await Barista.findByPk(id,{
-            include: Empleado
+        include:[
+             { 
+                model: Empleado,
+                include:
+                [DatosPersonales, Cafeteria]
+            }
+        ]
         });
     }
     async update(id, data){ // update data by id
