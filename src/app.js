@@ -5,7 +5,10 @@ import routes from "../routes/index.js";
 import pkg from 'pg';  // Importa pg y utiliza su exportación por defecto para ESM
 const { Client } = pkg;
 
-dotenv.config();
+// Solo carga dotenv en entornos que no sean producción
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 const app = express();
 app.use(cors());
@@ -19,10 +22,17 @@ const client = new Client({
   }
 });
 
-// Conéctate a la base de datos y maneja errores de conexión
-client.connect()
-  .then(() => console.log('Connected to the database'))
-  .catch(err => console.error('Database connection error:', err.stack));
+// Función de conexión con reintentos
+const connectWithRetry = () => {
+  client.connect()
+    .then(() => console.log('Connected to the database'))
+    .catch(err => {
+      console.error('Database connection error:', err.stack);
+      setTimeout(connectWithRetry, 5000); // Reintenta cada 5 segundos
+    });
+};
+
+connectWithRetry(); // Inicia la conexión con reintento
 
 // Define el puerto
 const port = process.env.PORT || 3000;
